@@ -31,14 +31,13 @@ var Player = function(x, y) {
 
  this.x = x;
  this.y = y;
- this.sprit = 'images/enemy-bug.png';
+ this.sprite = 'images/char-boy.png';
 };
 
 Player.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = this.x + this.speed*dt
 };
 
 Player.prototype.render = function() {
@@ -52,10 +51,10 @@ Player.prototype.handleInput = function() {};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var enemyOne = new Enemy(75,150);
+var enemyOne = new Enemy(75, 100);
 var allEnemies = [enemyOne];
-var playerOne = new Player(20,400);
-var player = playerOne;
+var player = new Player(200, 400);
+
 
 
 // This listens for key presses and sends the keys to your
