@@ -38,9 +38,16 @@ var Player = function(x, y, speed) {
 };
 
 Player.prototype.update = function() {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+   if (this.x < 0) {
+    this.x = 0
+   } else if (this.x > 400)
+   {this.x = 400
+   };
+   if (this.y < 0) {
+    this.y = 0
+   } else if (this.y > 400) {
+    this.y = 400
+   };
 };
 
 Player.prototype.render = function() {
