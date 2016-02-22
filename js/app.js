@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(x, y) {
+var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -7,6 +7,7 @@ var Enemy = function(x, y) {
     // a helper we've provided to easily load images
     this.x = x;
     this.y = y;
+    this.speed = speed
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -16,6 +17,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    this.x = this.x + this.speed*dt;
 };
 
 // Draw the enemy on the screen, required method for game
@@ -27,14 +29,15 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var Player = function(x, y) {
+var Player = function(x, y, speed) {
 
  this.x = x;
  this.y = y;
+ this.speed = speed
  this.sprite = 'images/char-boy.png';
 };
 
-Player.prototype.update = function(dt) {
+Player.prototype.update = function() {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -44,22 +47,39 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function() {};
+Player.prototype.handleInput = function(keyCode) {
+   switch (keyCode) {
+    case 'left':
+     this.x = this.x - 100;
+     break;
+    case 'right':
+     this.x = this.x + 100;
+     break;
+    case 'up':
+     this.y = this.y - 100;
+     break;
+    case 'down':
+     this.y = this.y + 100;
+     break;
+    default:
+
+   }
+};
 
 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var enemyOne = new Enemy(75, 100);
+var enemyOne = new Enemy(75, 100, 50);
 var allEnemies = [enemyOne];
-var player = new Player(200, 400);
+var player = new Player(200, 400, 100);
 
 
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keydown', function(e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
