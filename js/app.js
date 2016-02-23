@@ -18,12 +18,13 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + this.speed*dt;
+    Enemy.prototype.checkCollisions();
 };
 
 //Trying to get the enemies box to move across the screen with the sprite. But not able to still get a collision when the "player's box" is hardcoded and stationary.
 Enemy.prototype.checkCollisions = function(dt) {
  this.eDim = {x: this.x = this.x + this.speed*dt, y: this.y, w: 100, h: 74};
- var pDim = {x: 200, y: 400, w: 100, h: 83};
+ var pDim = {x: 200, y: 400, w: 100, h: 100};
  if (pDim.x < this.eDim.x + this.eDim.w &&
         pDim.x + pDim.w > this.eDim.x &&
         pDim.y < this.eDim.y + this.eDim.h &&
