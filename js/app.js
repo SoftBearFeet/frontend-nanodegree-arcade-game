@@ -9,7 +9,6 @@ var Enemy = function(x, y, speed) {
     this.y = y;
     this.speed = speed
     this.sprite = 'images/enemy-bug.png';
-    this.eDim = {x: x, y: y, w: 100, h: 74};
 };
 
 // Update the enemy's position, required method for game
@@ -21,11 +20,12 @@ Enemy.prototype.update = function(dt) {
     this.x = this.x + this.speed*dt;
 };
 
-var checkCollisions = function() {
- if (player.pDim.x < enemyOne.eDim.x + enemyOne.eDim.w &&
-        player.pDim.x + player.pDim.w > enemyOne.eDim.x &&
-        player.pDim.y < enemyOne.eDim.y + enemyOne.eDim.h &&
-        player.pDim.h + player.pDim.y > enemyOne.eDim.y) {
+Enemy.prototype.checkCollisions = function(dt) {
+ this.eDim = {x: this.x = this.x + this.speed*dt, y: this.y, w: 100, h: 74};
+ if (player.pDim.x < this.eDim.x + this.eDim.w &&
+        player.pDim.x + player.pDim.w > this.eDim.x &&
+        player.pDim.y < this.eDim.y + this.eDim.h &&
+        player.pDim.h + player.pDim.y > this.eDim.y) {
          alert("you died!")
         };
 };
@@ -45,7 +45,7 @@ var Player = function(x, y, speed) {
  this.y = y;
  this.speed = speed
  this.sprite = 'images/char-boy.png';
- this.pDim = {x: x, y: y, w: 100, h: 83};
+ this.pDim = {x: this.x, y: this.y, w: 100, h: 83};
 };
 
 Player.prototype.update = function() {
@@ -91,7 +91,7 @@ Player.prototype.handleInput = function(keyCode) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var enemyOne = new Enemy(75, 100, 50);
+var enemyOne = new Enemy(0, 400, 50);
 var allEnemies = [enemyOne];
 var player = new Player(200, 400, 100);
 
