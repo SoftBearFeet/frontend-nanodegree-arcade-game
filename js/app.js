@@ -20,13 +20,15 @@ Enemy.prototype.update = function(dt) {
     this.x = this.x + this.speed*dt;
 };
 
+//Trying to get the enemies box to move across the screen with the sprite. But not able to still get a collision when the "player's box" is hardcoded and stationary.
 Enemy.prototype.checkCollisions = function(dt) {
  this.eDim = {x: this.x = this.x + this.speed*dt, y: this.y, w: 100, h: 74};
- if (player.pDim.x < this.eDim.x + this.eDim.w &&
-        player.pDim.x + player.pDim.w > this.eDim.x &&
-        player.pDim.y < this.eDim.y + this.eDim.h &&
-        player.pDim.h + player.pDim.y > this.eDim.y) {
-         alert("you died!")
+ var pDim = {x: 200, y: 400, w: 100, h: 83};
+ if (pDim.x < this.eDim.x + this.eDim.w &&
+        pDim.x + pDim.w > this.eDim.x &&
+        pDim.y < this.eDim.y + this.eDim.h &&
+        pDim.h + pDim.y > this.eDim.y) {
+         alert("**test** you died!")
         };
 };
 
@@ -39,12 +41,15 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
+
+
 var Player = function(x, y, speed) {
 
  this.x = x;
  this.y = y;
  this.speed = speed
  this.sprite = 'images/char-boy.png';
+ //I have the pDim as a place holder until I can get the collisions working.
  this.pDim = {x: this.x, y: this.y, w: 100, h: 83};
 };
 
