@@ -9,6 +9,7 @@ var Enemy = function(x, y, speed) {
     this.y = y;
     this.speed = speed
     this.sprite = 'images/enemy-bug.png';
+    this.eDim = {x: x, y: y, w: 100, h: 74};
 };
 
 // Update the enemy's position, required method for game
@@ -18,6 +19,15 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + this.speed*dt;
+};
+
+var checkCollisions = function() {
+ if (player.pDim.x < enemyOne.eDim.x + enemyOne.eDim.w &&
+        player.pDim.x + player.pDim.w > enemyOne.eDim.x &&
+        player.pDim.y < enemyOne.eDim.y + enemyOne.eDim.h &&
+        player.pDim.h + player.pDim.y > enemyOne.eDim.y) {
+         alert("you died!")
+        };
 };
 
 // Draw the enemy on the screen, required method for game
@@ -35,6 +45,7 @@ var Player = function(x, y, speed) {
  this.y = y;
  this.speed = speed
  this.sprite = 'images/char-boy.png';
+ this.pDim = {x: x, y: y, w: 100, h: 83};
 };
 
 Player.prototype.update = function() {
@@ -48,6 +59,8 @@ Player.prototype.update = function() {
    } else if (this.y > 400) {
     this.y = 400
    };
+
+
 };
 
 Player.prototype.render = function() {
