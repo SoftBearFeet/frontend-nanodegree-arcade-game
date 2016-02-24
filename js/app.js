@@ -13,7 +13,7 @@ var Enemy = function() {
     this.y = Math.floor(Math.random() * (205 - 35 + 1)) +35;
 
     //This.speed randomly determins how fast the bug will move.
-    //this.speed = Math.floor(Math.random() * (500 - 50 + 1)) + 50;
+    this.speed = Math.floor(Math.random() * (500 - 50 + 1)) + 50;
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -39,7 +39,9 @@ Enemy.prototype.checkCollisions = function(dt) {
         player.x + player.w > this.eDim.x &&
         player.y < this.eDim.y + this.eDim.h &&
         player.h + player.y > this.eDim.y) {
+         player.reset();
          alert("**test** you died!")
+
         };
 };
 
