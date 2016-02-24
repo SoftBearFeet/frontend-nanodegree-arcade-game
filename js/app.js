@@ -18,17 +18,16 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + this.speed*dt;
-    this.checkCollisions();
+    this.checkCollisions(dt);
 };
 
-//Trying to get the enemies box to move across the screen with the sprite. But not able to still get a collision when the "player's box" is hardcoded and stationary.
+//Collision dectection, if the enemy caught the player
 Enemy.prototype.checkCollisions = function(dt) {
  this.eDim = {x: this.x = this.x + this.speed*dt, y: this.y, w: 100, h: 74};
- var pDim = {x: 200, y: 400, w: 100, h: 100};
- if (pDim.x < this.eDim.x + this.eDim.w &&
-        pDim.x + pDim.w > this.eDim.x &&
-        pDim.y < this.eDim.y + this.eDim.h &&
-        pDim.h + pDim.y > this.eDim.y) {
+ if (player.x < this.eDim.x + this.eDim.w &&
+        player.x + player.w > this.eDim.x &&
+        player.y < this.eDim.y + this.eDim.h &&
+        player.h + player.y > this.eDim.y) {
          alert("**test** you died!")
         };
 };
@@ -50,8 +49,8 @@ var Player = function(x, y, speed) {
  this.y = y;
  this.speed = speed
  this.sprite = 'images/char-boy.png';
- //I have the pDim as a place holder until I can get the collisions working.
- this.pDim = {x: this.x, y: this.y, w: 100, h: 83};
+ this.w = 100;
+ this.h = 74;
 };
 
 Player.prototype.update = function() {
@@ -97,8 +96,9 @@ Player.prototype.handleInput = function(keyCode) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var enemyOne = new Enemy(0, 400, 50);
-var allEnemies = [enemyOne];
+var enemyOne = new Enemy(-10, 200, 50);
+var enemytwo = new Enemy(-10, 100, 25);
+var allEnemies = [enemyOne, enemytwo];
 var player = new Player(200, 400, 100);
 
 
