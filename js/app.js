@@ -25,6 +25,11 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     this.x = this.x + this.speed*dt;
     this.checkCollisions(dt);
+
+    // Calls the function to start the enemies when the go off canvas.
+    if (this.x > 500) {
+     this.restart();
+    };
 };
 
 //Collision dectection, if the enemy caught the player
@@ -41,6 +46,13 @@ Enemy.prototype.checkCollisions = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+//This is the restart function for the Enemies when they go off the canvas.
+Enemy.prototype.restart = function() {
+ this.x = -10;
+ this.y = this.y = Math.floor(Math.random() * (205 - 35 + 1)) +35;
+ this.sprite = 'images/enemy-bug.png';
 };
 
 // Now write your own player class
