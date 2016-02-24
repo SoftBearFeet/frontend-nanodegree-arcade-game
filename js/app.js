@@ -29,7 +29,7 @@ Enemy.prototype.update = function(dt) {
     // Calls the function to start the enemies when the go off canvas.
     if (this.x > 500) {
      this.restart();
-    };
+    }
 };
 
 //Collision dectection, if the enemy caught the player
@@ -40,9 +40,8 @@ Enemy.prototype.checkCollisions = function(dt) {
         player.y < this.eDim.y + this.eDim.h &&
         player.h + player.y > this.eDim.y) {
          player.reset();
-         alert("**test** you died!")
-
-        };
+         alert("**test** you died!");
+        }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -81,21 +80,21 @@ var Player = function(x, y) {
 Player.prototype.update = function() {
  //left and Right Boundry for player.
    if (this.x < 0) {
-    this.x = 0
+    this.x = 0;
    } else if (this.x > 400)
-   {this.x = 400
-   };
+   {this.x = 400;
+   }
 
    //Top boundry. If the player reaches top bounder, they win and reset the game.
    if (this.y < 44) {
-    alert("You won!")
+    alert("You won!");
     this.reset();
-   };
+   }
 
    //Bottom Boundry for the game.
    if (this.y > 376) {
-    this.y = 376
-   };
+    this.y = 376;
+   }
 
 
 };
@@ -132,9 +131,9 @@ var allEnemies = [];
 
 //Created for loop to create new Enemy class and push to allEnemies array.
 for (e=0; e < 3; e++){
- var enemy = new Enemy;
+ var enemy = new Enemy();
  allEnemies.push(enemy);
-};
+}
 
 //Creates player instance.
 var player = new Player(202, 376);
