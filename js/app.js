@@ -13,7 +13,7 @@ var Enemy = function() {
     this.y = Math.floor(Math.random() * (205 - 35 + 1)) +35;
 
     //This.speed randomly determins how fast the bug will move.
-    this.speed = Math.floor(Math.random() * (500 - 50 + 1)) + 50;
+    //this.speed = Math.floor(Math.random() * (500 - 50 + 1)) + 50;
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -82,10 +82,10 @@ Player.prototype.update = function() {
    } else if (this.x > 400)
    {this.x = 400
    };
-   if (this.y < 0) {
-    this.y = 0
-   } else if (this.y > 400) {
-    this.y = 400
+   if (this.y < 44) {
+    this.y = 44
+   } else if (this.y > 376) {
+    this.y = 376
    };
 
 
@@ -128,7 +128,7 @@ for (e=0; e < 3; e++){
 };
 
 //Creates player instance.
-var player = new Player(200, 375);
+var player = new Player(202, 376);
 
 
 
