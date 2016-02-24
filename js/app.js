@@ -47,10 +47,15 @@ var Player = function(x, y, speed) {
 
  this.x = x;
  this.y = y;
- this.speed = speed
  this.sprite = 'images/char-boy.png';
+
+ //The width and the height is for the Collision dectection
  this.w = 100;
  this.h = 74;
+
+ //These start corrdiantes are for when the player needs to be rest.
+ this.startX = x;
+ this.startY = y;
 };
 
 Player.prototype.update = function() {
@@ -81,10 +86,10 @@ Player.prototype.handleInput = function(keyCode) {
      this.x = this.x + 100;
      break;
     case 'up':
-     this.y = this.y - 100;
+     this.y = this.y - 85;
      break;
     case 'down':
-     this.y = this.y + 100;
+     this.y = this.y + 85;
      break;
     default:
 
@@ -99,7 +104,7 @@ Player.prototype.handleInput = function(keyCode) {
 var enemyOne = new Enemy(-10, 200, 50);
 var enemytwo = new Enemy(-10, 100, 25);
 var allEnemies = [enemyOne, enemytwo];
-var player = new Player(200, 400, 100);
+var player = new Player(200, 375);
 
 
 
