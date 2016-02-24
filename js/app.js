@@ -134,6 +134,13 @@ var player = new Player(202, 376);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
+
+//Reset function for when player get hit or reaches water.
+Player.prototype.reset = function () {
+ this.x = 202;
+ this.y = 376;
+};
+
 document.addEventListener('keydown', function(e) {
     var allowedKeys = {
         37: 'left',
