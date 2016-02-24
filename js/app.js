@@ -61,7 +61,7 @@ Enemy.prototype.restart = function() {
 
 
 
-var Player = function(x, y, speed) {
+var Player = function(x, y) {
 
  this.x = x;
  this.y = y;
@@ -98,16 +98,16 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(keyCode) {
    switch (keyCode) {
     case 'left':
-     this.x = this.x - 100;
+     this.x = this.x - 101;
      break;
     case 'right':
-     this.x = this.x + 100;
+     this.x = this.x + 101;
      break;
     case 'up':
-     this.y = this.y - 85;
+     this.y = this.y - 83;
      break;
     case 'down':
-     this.y = this.y + 85;
+     this.y = this.y + 83;
      break;
     default:
 
