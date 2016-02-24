@@ -1,12 +1,16 @@
 // Enemies our player must avoid
-var Enemy = function(x, y) {
+var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.x = x;
-    this.y = y;
+
+    //Set enemy's "x" to start before the canvas, so that they roll across the screen.
+    this.x = -10;
+
+    //Set enemy's "y" to be randomly generated between the pixels of the road
+    this.y = Math.floor(Math.random() * (205 - 35 + 1)) +35;
 
     //This.speed randomly determins how fast the bug will move.
     this.speed = Math.floor(Math.random() * (500 - 50 + 1)) + 50;
@@ -103,8 +107,8 @@ Player.prototype.handleInput = function(keyCode) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var enemyOne = new Enemy(-10, 200);
-var enemytwo = new Enemy(-10, 100);
+var enemyOne = new Enemy;
+var enemytwo = new Enemy;
 var allEnemies = [enemyOne, enemytwo];
 var player = new Player(200, 375);
 
