@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -7,7 +7,9 @@ var Enemy = function(x, y, speed) {
     // a helper we've provided to easily load images
     this.x = x;
     this.y = y;
-    this.speed = speed
+
+    //This.speed randomly determins how fast the bug will move.
+    this.speed = Math.floor(Math.random() * (500 - 50 + 1)) + 50;
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -101,8 +103,8 @@ Player.prototype.handleInput = function(keyCode) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var enemyOne = new Enemy(-10, 200, 50);
-var enemytwo = new Enemy(-10, 100, 25);
+var enemyOne = new Enemy(-10, 200);
+var enemytwo = new Enemy(-10, 100);
 var allEnemies = [enemyOne, enemytwo];
 var player = new Player(200, 375);
 
