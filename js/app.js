@@ -34,7 +34,7 @@ Enemy.prototype.update = function(dt) {
 
 //Collision dectection, if the enemy caught the player
 Enemy.prototype.checkCollisions = function(dt) {
- this.eDim = {x: this.x = this.x + this.speed*dt, y: this.y, w: 100, h: 74};
+ this.eDim = {x: this.x = this.x + this.speed*dt, y: this.y, w: 73, h: 54};
  if (player.x < this.eDim.x + this.eDim.w &&
         player.x + player.w > this.eDim.x &&
         player.y < this.eDim.y + this.eDim.h &&
@@ -70,8 +70,8 @@ var Player = function(x, y) {
  this.sprite = 'images/char-boy.png';
 
  //The width and the height is for the Collision dectection
- this.w = 100;
- this.h = 74;
+ this.w = 73;
+ this.h = 54;
 
  //These start corrdiantes are for when the player needs to be rest.
  this.startX = x;
