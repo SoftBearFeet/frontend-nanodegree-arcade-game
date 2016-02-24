@@ -79,14 +79,21 @@ var Player = function(x, y) {
 };
 
 Player.prototype.update = function() {
+ //left and Right Boundry for player.
    if (this.x < 0) {
     this.x = 0
    } else if (this.x > 400)
    {this.x = 400
    };
+
+   //Top boundry. If the player reaches top bounder, they win and reset the game.
    if (this.y < 44) {
-    this.y = 44
-   } else if (this.y > 376) {
+    alert("You won!")
+    this.reset();
+   };
+
+   //Bottom Boundry for the game.
+   if (this.y > 376) {
     this.y = 376
    };
 
